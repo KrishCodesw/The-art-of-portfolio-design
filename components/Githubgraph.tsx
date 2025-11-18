@@ -29,7 +29,7 @@ const Footerbar = () => {
         theme === "dark" ? "bg-black" : "bg-white"
       }`}
     >
-      <motion.div variants={itemVariants} className="w-full max-w-4xl">
+      <motion.div variants={itemVariants} className="w-full max-w-2xl">
         <h1
           className={`text-xl sm:text-2xl text-left font-sans mb-6 ${
             theme === "dark" ? "text-gray-200" : "text-gray-950"
