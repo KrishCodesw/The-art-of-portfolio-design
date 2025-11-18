@@ -74,7 +74,7 @@ const CraftsKJ = () => {
                 target="_blank"
                 className="flex gap-1 underline  underline-offset-4 "
               >
-                JanSamvaad {<ArrowUpRight className="" />}
+                JanSamvaad {<ArrowUpRight />}
               </a>
 
               <span

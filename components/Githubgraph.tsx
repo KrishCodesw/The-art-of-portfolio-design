@@ -1,5 +1,7 @@
 "use client";
 
+// import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+import { GitHubCalendar } from "react-github-calendar";
 import { useTheme } from "./ThemeProvider";
 import { motion } from "framer-motion";
 
@@ -40,12 +42,18 @@ const Footerbar = () => {
         <motion.h1
           variants={itemVariants}
           id="name"
-          className={`text-xl sm:text-2xl text-left font-sans mb-6 transition-colors duration-150 ${
+          className={`text-xl sm:text-2xl  text-left font-sans mb-6 transition-colors duration-150 ${
             theme === "dark" ? "text-gray-200" : "text-gray-950"
           }`}
         >
-          K&nbsp;&nbsp;R&nbsp;&nbsp;I&nbsp;&nbsp;S&nbsp;&nbsp;H
-          <br />
+          Github Contributions
+          <div
+            className={`text-xl sm:text-2xl text-left font-sans mb-6 pt-3 overflow-x-auto max-w-2xl transition-colors duration-150 ${
+              theme === "dark" ? "text-gray-200" : "text-gray-950"
+            }`}
+          >
+            <GitHubCalendar username="Krishcodesw" />
+          </div>
         </motion.h1>
       </motion.div>
     </>
