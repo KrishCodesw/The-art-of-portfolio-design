@@ -54,6 +54,23 @@ const Footerbar = () => {
             />
           </div>
         </div>
+        <h1
+          className={`text-xl sm:text-2xl text-left font-sans mt-6 ${
+            theme === "dark" ? "text-gray-200" : "text-gray-950"
+          }`}
+        >
+          You've come this far, here's my favourite song -
+        </h1>
+        <motion.p className="pt-5">
+          <iframe
+            data-testid="embed-iframe"
+            src="https://open.spotify.com/embed/track/5XseQZ9TGr06Rv1Ye6wCu0?utm_source=generator&theme=0"
+            width="100%"
+            height=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </motion.p>
       </motion.div>
     </motion.div>
   );

@@ -7,6 +7,7 @@ const Section = () => {
   return (
     <div>
       <Introduction />
+
       <Skillbar />
       <CareerTab />
       <CraftsKJ />
