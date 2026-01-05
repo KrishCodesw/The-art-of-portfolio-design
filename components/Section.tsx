@@ -3,6 +3,7 @@ import CraftsKJ from "./Crafts";
 import Footerbar from "./Githubgraph";
 import Introduction from "./Intro";
 import Skillbar from "./Skills";
+import Footer from "./Footer";
 const Section = () => {
   return (
     <div>
@@ -12,6 +13,7 @@ const Section = () => {
       <CareerTab />
       <CraftsKJ />
       <Footerbar />
+      <Footer />
     </div>
   );
 };

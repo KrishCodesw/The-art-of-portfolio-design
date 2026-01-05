@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Manrope } from "next/font/google";
+import ScrollProgress from "@/components/ScrollProgress";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -35,6 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={manrope.variable}>
       <body className="font-sans">
+        <ScrollProgress />
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
