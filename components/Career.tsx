@@ -115,7 +115,7 @@ const CareerTab = () => {
                   theme === "dark" ? "bg-gray-400" : "bg-gray-800"
                 } bg-clip-text text-transparent`}
               >
-                Full Stack & RnD Intern , Mar 2025 - Present
+                Full Stack & RnD Intern , Mar 2025 - Dec 2025
               </span>
             </motion.p>
           </motion.div>

@@ -13,7 +13,6 @@ const Section = () => {
       <CareerTab />
       <CraftsKJ />
       <Footerbar />
-      <Footer />
     </div>
   );
 };

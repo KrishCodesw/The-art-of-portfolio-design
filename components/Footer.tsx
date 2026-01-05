@@ -1,3 +1,5 @@
+import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+
 export default function Footer() {
   return (
     <footer className="relative bg-black text-white px-6 mb-6 overflow-hidden">
@@ -24,14 +26,26 @@ export default function Footer() {
 
         {/* Socials */}
         <div className="flex gap-6 text-white/50">
-          <a href="#" className="hover:text-white transition">
-            GitHub
+          <a
+            href="https://github.com/Krishcodesw"
+            target="_blank"
+            className="hover:text-white transition"
+          >
+            <SiGithub />
           </a>
-          <a href="#" className="hover:text-white transition">
-            LinkedIn
+          <a
+            href="https://www.linkedin.com/in/krish-jain-445aa332a/"
+            target="_blank"
+            className="hover:text-white transition"
+          >
+            <SiLinkedin />
           </a>
-          <a href="#" className="hover:text-white transition">
-            X
+          <a
+            href="https://x.com/KrishJainw"
+            target="_blank"
+            className="hover:text-white transition"
+          >
+            <SiX />
           </a>
         </div>
 
