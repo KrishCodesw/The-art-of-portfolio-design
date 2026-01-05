@@ -32,6 +32,7 @@ import {
   SiAmazonec2,
   SiNewrelic,
   SiKubernetes,
+  SiSocketdotio,
 } from "react-icons/si";
 
 interface SkillItem {
@@ -60,14 +61,15 @@ const WEB_DEV_SKILLS: SkillItem[] = [
 ];
 
 const BackendArray: SkillItem[] = [
+  { name: "PostgreSQL", Icon: SiPostgresql },
+  { name: "Prisma", Icon: SiPrisma },
   { name: "Express", Icon: SiExpress },
   { name: "Node.js", Icon: FaNodeJs },
   { name: "MongoDB", Icon: SiMongodb },
-  { name: "PostgreSQL", Icon: SiPostgresql },
   { name: "Supabase", Icon: SiSupabase },
-  { name: "Prisma", Icon: SiPrisma },
   { name: "Turborepo", Icon: SiTurborepo },
-  // { name: "fastAPI", Icon: SiFastapi },
+  // { name: "SocketIo", Icon: SiSocketdotio },
+  { name: "fastAPI", Icon: SiFastapi },
 ];
 
 const DevopsArray: SkillItem[] = [
