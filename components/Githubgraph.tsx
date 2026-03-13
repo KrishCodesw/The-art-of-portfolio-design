@@ -32,29 +32,27 @@ const Footerbar = () => {
       }`}
     >
       <motion.div variants={itemVariants} className="w-full max-w-2xl">
-        <h1
-          className={`text-xl sm:text-2xl text-left  ${
-            theme === "dark" ? "text-gray-200" : "text-gray-950"
+        {/* Github Section */}
+        <h2
+          className={`text-xl sm:text-2xl font-semibold tracking-tight mb-6 ${
+            theme === "dark" ? "text-gray-200" : "text-gray-900"
           }`}
         >
-          Github Contributions
-        </h1>
+          GitHub Contributions
+        </h2>
 
-        <div
-          className={`
-            w-full overflow-x-auto pb-2
-            ${theme === "dark" ? "text-gray-200" : "text-gray-950"}
-        `}
-        >
-          <div className="min-w-fit">
-            <GitHubCalendar
-              username="Krishcodesw"
-              colorScheme={theme === "dark" ? "dark" : "light"}
-              blockSize={10}
-              blockMargin={3}
-              fontSize={12}
-            />
-          </div>
+        {/* MATH FIX: 53 columns * (10px + 2px) = 636px. 
+            This safely fits inside your max-w-2xl (672px) boundary. 
+            No overflow wrapper needed! 
+        */}
+        <div className="w-full flex justify-center sm:justify-start">
+          <GitHubCalendar
+            username="Krishcodesw"
+            colorScheme={theme === "dark" ? "dark" : "light"}
+            blockSize={10}
+            blockMargin={2}
+            fontSize={12}
+          />
         </div>
         <h1
           className={`text-xl sm:text-2xl text-left font-sans mt-6 ${
