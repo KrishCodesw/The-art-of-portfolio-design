@@ -13,13 +13,6 @@ const posts = [
     summary:
       "Reverse engineering a Modular Full-Stack Architecture. Learn how to build scalable full-stack applications without monorepos.",
   },
-  {
-    slug: "understanding-server-components",
-    title: "Understanding React Server Components",
-    date: "March 01, 2026",
-    summary:
-      "Breaking down how Server Components work and why they are a game-changer for web performance.",
-  },
 ];
 
 const BlogIndex = () => {
