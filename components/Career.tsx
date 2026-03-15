@@ -1,8 +1,10 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
-import { ArrowUpRight, ChevronsRightIcon } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
+
 const CareerTab = () => {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,11 +35,12 @@ const CareerTab = () => {
         animate="visible"
         variants={containerVariants}
         id="disable-selection"
-        className={`flex items-start justify-center  px-4 sm:px-6 md:px-8  pb-0 transition-colors duration-300 ${
+        className={`flex items-start justify-center px-4 sm:px-6 md:px-8 pb-0 transition-colors duration-300 ${
           theme === "dark" ? "bg-black" : "bg-white"
         }`}
       >
         <div className="max-w-2xl w-full mx-auto text-center">
+          {/* --- CAREER SECTION --- */}
           <motion.h1
             variants={itemVariants}
             id="name"
@@ -47,13 +50,14 @@ const CareerTab = () => {
           >
             Career
           </motion.h1>
+
           <motion.div
             initial="hidden"
             animate="visible"
             variants={{
               hidden: {},
               visible: {
-                transition: { staggerChildren: 0.3 }, // stagger the children
+                transition: { staggerChildren: 0.3 },
               },
             }}
           >
@@ -69,9 +73,9 @@ const CareerTab = () => {
               <a
                 href="https://www.effilearn.in/"
                 target="_blank"
-                className="flex gap-1 underline  underline-offset-4 "
+                className="flex gap-1 items-center underline underline-offset-4"
               >
-                Effilearn {<ArrowUpRight className="" />}
+                Effilearn <ArrowUpRight size={18} />
               </a>
 
               <span
@@ -83,13 +87,14 @@ const CareerTab = () => {
               </span>
             </motion.p>
           </motion.div>
+
           <motion.div
             initial="hidden"
             animate="visible"
             variants={{
               hidden: {},
               visible: {
-                transition: { staggerChildren: 0.3 }, // stagger the children
+                transition: { staggerChildren: 0.3 },
               },
             }}
           >
@@ -98,16 +103,16 @@ const CareerTab = () => {
                 hidden: { opacity: 0, y: 20 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
               }}
-              className={`text-sm sm:text-base md:text-lg pt-2 text-left font-sans transition-colors duration-150 ${
+              className={`text-sm sm:text-base md:text-lg pt-4 text-left font-sans transition-colors duration-150 ${
                 theme === "dark" ? "text-gray-300" : "text-black"
               }`}
             >
               <a
                 href="https://aetheronai.onrender.com/"
                 target="_blank"
-                className="flex gap-1 underline  underline-offset-4 "
+                className="flex gap-1 items-center underline underline-offset-4"
               >
-                Aetheron.ai {<ArrowUpRight className="" />}
+                Aetheron.ai <ArrowUpRight size={18} />
               </a>
 
               <span
@@ -119,6 +124,21 @@ const CareerTab = () => {
               </span>
             </motion.p>
           </motion.div>
+
+          {/* --- BLOGS LINK --- */}
+          <motion.h1
+            variants={itemVariants}
+            className={`text-xl sm:text-2xl text-left font-sans mt-12 mb-3 transition-colors duration-150 ${
+              theme === "dark" ? "text-gray-200" : "text-gray-950"
+            }`}
+          >
+            <Link
+              href="/blogs"
+              className="flex items-center gap-1 w-fit hover:opacity-80 transition-opacity underline underline-offset-4"
+            >
+              Blogs
+            </Link>
+          </motion.h1>
         </div>
       </motion.section>
     </>

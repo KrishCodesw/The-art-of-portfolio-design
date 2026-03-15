@@ -112,7 +112,7 @@ const CraftsKJ = () => {
           className="mb-12"
         >
           <h1
-            className={`text-3xl sm:text-4xl font-semibold font-sans tracking-tight ${theme === "dark" ? "text-gray-100" : "text-gray-900"}`}
+            className={`text-2xl sm:text-3xl font-sans tracking-tight ${theme === "dark" ? "text-gray-100" : "text-gray-900"}`}
           >
             Built
           </h1>
