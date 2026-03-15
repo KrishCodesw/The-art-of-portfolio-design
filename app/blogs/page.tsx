@@ -7,11 +7,11 @@ import { useTheme } from "@/components/ThemeProvider";
 // Mock data: Replace with your actual fetching logic later
 const posts = [
   {
-    slug: "building-my-portfolio",
-    title: "Building My Portfolio with Next.js",
-    date: "March 15, 2026",
+    slug: "blog1",
+    title: "The Blueprint to Senior-Level Code",
+    date: "Jan 26, 2026",
     summary:
-      "A deep dive into why I chose Next.js App Router and Tailwind CSS for my new developer portfolio.",
+      "Reverse engineering a Modular Full-Stack Architecture. Learn how to build scalable full-stack applications without monorepos.",
   },
   {
     slug: "understanding-server-components",
