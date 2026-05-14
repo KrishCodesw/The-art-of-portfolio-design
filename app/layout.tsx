@@ -5,11 +5,6 @@ import "./globals.css";
 
 import { ThemeProvider } from "@/components/ThemeProvider";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
 const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -23,9 +18,64 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Krish- Full Stack Engineer",
+  // Required for relative image URLs in OpenGraph
+  metadataBase: new URL("https://krishjain-me.vercel.app"),
+
+  title: "Krish Jain | Full-Stack Engineer",
   description:
-    "A portfolio website that showcases the best works by Krish Jain",
+    "Portfolio of Krish Jain, a Full-Stack Developer building scalable web infrastructure, AI agents, and modern user interfaces.",
+  keywords: [
+    "Krish Jain",
+    "Full Stack Engineer",
+    "Software Developer",
+    "Mumbai",
+    "Next.js Developer",
+    "React Developer",
+    "Web3 Developer",
+  ],
+  authors: [{ name: "Krish Jain", url: "https://krishjain-me.vercel.app" }],
+  creator: "Krish Jain",
+
+  // Open Graph (For LinkedIn, Discord, Facebook)
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://krishjain-me.vercel.app",
+    title: "Krish Jain | Full-Stack Engineer",
+    description:
+      "Explore my technical projects, including JanSamvaad, Solana Nexus, and scalable infrastructure experiments.",
+    siteName: "Krish Jain Portfolio",
+    images: [
+      {
+        url: "/og-image.png", // Make sure to add this image to your public folder!
+        width: 1200,
+        height: 630,
+        alt: "Krish Jain - Full Stack Engineer Portfolio",
+      },
+    ],
+  },
+
+  // Twitter Cards
+  twitter: {
+    card: "summary_large_image",
+    title: "Krish Jain | Full-Stack Engineer",
+    description:
+      "Explore my technical projects and infrastructure experiments.",
+    images: ["/og.png"],
+  },
+
+  // Tell Google explicitly to index this page
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
