@@ -16,6 +16,13 @@ const mainProjects = [
     image: "/jansamvaad.png",
   },
   {
+    title: "TCET Research Culture Development Cell Dashboard",
+    description:
+      "The schema-aware SQL agent. Generate queries, visualize relationships, and export production-ready ER diagrams instantly.",
+    link: "https://getsql.vercel.app/",
+    image: "/getsql.png",
+  },
+  {
     title: "getSQL",
     description:
       "The schema-aware SQL agent. Generate queries, visualize relationships, and export production-ready ER diagrams instantly.",
