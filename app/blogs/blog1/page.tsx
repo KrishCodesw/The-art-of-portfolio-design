@@ -1,4 +1,37 @@
 "use client";
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+    __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      headline: "The Blueprint to Senior-Level Code",
+      description:
+        "Reverse engineering a Modular Full-Stack Architecture. Learn how to build scalable full-stack applications without monorepos.",
+      image: "https://krishjain-me.vercel.app/og-image.png", // Update if you have a specific blog header image
+      author: {
+        "@type": "Person",
+        name: "Krish Jain",
+        url: "https://krishjain-me.vercel.app/",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Krish Jain",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://krishjain-me.vercel.app/icon.png",
+        },
+      },
+      // Hardcode the actual publish date here (e.g., "2024-05-15T08:00:00+08:00")
+      datePublished: new Date().toISOString(),
+      dateModified: new Date().toISOString(),
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://krishjain-me.vercel.app/blogs/blog1",
+      },
+    }),
+  }}
+/>;
 
 import { motion } from "framer-motion";
 import { useTheme } from "@/components/ThemeProvider";
