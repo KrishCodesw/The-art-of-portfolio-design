@@ -212,7 +212,7 @@ const CareerTab = () => {
               </div>
             </div>
 
-            <Link
+            <Link 
               href="/blogs"
               className="text-sm font-medium underline underline-offset-4 hover:opacity-80 transition-opacity"
             >
