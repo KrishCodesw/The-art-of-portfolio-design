@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Krish Jain Portfolio",
     images: [
       {
-        url: "/og-image.png", // Make sure to add this image to your public folder!
+        url: "/og.png", // Make sure to add this image to your public folder!
         width: 1200,
         height: 630,
         alt: "Krish Jain - Full Stack Engineer Portfolio",
