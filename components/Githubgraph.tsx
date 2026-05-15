@@ -1,14 +1,24 @@
 "use client";
-
+import { useRef } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
+// import { Spotify } from "react-spotify-embed";
+import dynamic from "next/dynamic";
 
+const Spotify = dynamic(
+  () => import("react-spotify-embed").then((mod) => mod.Spotify),
+  { ssr: false }, // Completely removes it from server-side rendering
+);
 import { useTheme } from "./ThemeProvider";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 const Footerbar = () => {
   const { theme } = useTheme();
-
+  const spotifyRef = useRef(null);
+  const isSpotifyInView = useInView(spotifyRef, {
+    once: true,
+    margin: "200px",
+  });
   // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -59,18 +69,21 @@ const Footerbar = () => {
             theme === "dark" ? "text-gray-200" : "text-gray-950"
           }`}
         >
-          You've come this far, here's my favourite song -
+          You've come this far, here's my favourite playlist -
         </h1>
-        <motion.p className="pt-5">
-          <iframe
-            data-testid="embed-iframe"
-            src="https://open.spotify.com/embed/track/5XseQZ9TGr06Rv1Ye6wCu0?utm_source=generator&theme=0"
-            width="100%"
-            height=""
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-          ></iframe>
-        </motion.p>
+        <motion.div
+          ref={spotifyRef}
+          className="w-full mt-5 min-h-[152px] bg-neutral-100 dark:bg-neutral-900  rounded-2xl"
+          // Note: Added a subtle pulse/placeholder background while it loads!
+        >
+          {isSpotifyInView && (
+            <Spotify
+              link="https://open.spotify.com/playlist/2evV79ueEZzZfI2oB9zfUb?si=QNgkubdwSFOOtnX5dfhuXA"
+              width="100%"
+              height={152}
+            />
+          )}
+        </motion.div>
 
         <footer
           className={`relative w-full  px-6 pt-3 pb-10 overflow-hidden transition-colors duration-300 ${
