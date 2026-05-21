@@ -178,7 +178,7 @@ const CareerTab = () => {
                   isDark ? "bg-gray-400" : "bg-gray-800"
                 } bg-clip-text text-transparent`}
               >
-                Full Stack Intern, Apr 2026 - Present
+                Forward Deployed Engineer (FDE), Apr 2026 - Present
               </span>
             </motion.p>
           </motion.div>
