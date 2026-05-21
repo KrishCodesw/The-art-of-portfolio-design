@@ -69,7 +69,7 @@ const CareerTab = () => {
               isDark ? "text-gray-200" : "text-gray-950"
             }`}
           >
-            Career
+            Where I've worked
           </motion.h1>
 
           <motion.div

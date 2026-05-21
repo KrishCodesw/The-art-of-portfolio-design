@@ -197,7 +197,7 @@ const CraftsKJ = () => {
               theme === "dark" ? "text-gray-100" : "text-gray-900"
             }`}
           >
-            Built
+            Recent Builds
           </h1>
           <p
             className={`mt-2 text-base ${
