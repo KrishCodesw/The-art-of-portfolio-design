@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 // import { Spotify } from "react-spotify-embed";
@@ -14,11 +14,53 @@ import { motion, useInView } from "framer-motion";
 
 const Footerbar = () => {
   const { theme } = useTheme();
-  const spotifyRef = useRef(null);
+  const spotifyRef = useRef<HTMLDivElement>(null);
   const isSpotifyInView = useInView(spotifyRef, {
     once: true,
     margin: "200px",
   });
+
+  // Konami code easter egg
+  const [konamiIndex, setKonamiIndex] = useState(0);
+  const [konamiSuccess, setKonamiSuccess] = useState(false);
+  const konamiCode = [
+    "ArrowUp",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+    "ArrowLeft",
+    "ArrowRight",
+    "KeyB",
+    "KeyA",
+    "Enter",
+  ];
+
+  // Konami keydown listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const key = e.code;
+      if (key === konamiCode[konamiIndex]) {
+        setKonamiIndex((prev) => prev + 1);
+        if (konamiIndex + 1 === konamiCode.length) {
+          setKonamiSuccess(true);
+          // Reset after a short time so it can be triggered again
+          setTimeout(() => {
+            setKonamiSuccess(false);
+            setKonamiIndex(0);
+          }, 5000);
+        }
+      } else {
+        setKonamiIndex(0);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [konamiIndex]);
+
   // Animation Variants
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -56,14 +98,36 @@ const Footerbar = () => {
             No overflow wrapper needed! 
         */}
         <div className="w-full flex justify-center sm:justify-start">
+          {/* @ts-ignore - tooltip prop not in DefinitelyTyped but works at runtime */}
           <GitHubCalendar
-            username="Krishcodesw"
-            colorScheme={theme === "dark" ? "dark" : "light"}
-            blockSize={10}
-            blockMargin={2}
-            fontSize={12}
+            {...({
+              username: "Krishcodesw",
+              colorScheme: theme === "dark" ? "dark" : "light",
+              blockSize: 10,
+              blockMargin: 2,
+              fontSize: 12,
+              tooltip: ({ date, count }: any) => (
+                <div
+                  style={{
+                    background: theme === "dark" ? "#333" : "#fff",
+                    color: theme === "dark" ? "#fff" : "#000",
+                    padding: "4px 8px",
+                    borderRadius: "4px",
+                    fontSize: "0.75rem",
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+                  }}
+                >
+                  {count} contribution{count !== 1 ? "s" : ""} on{" "}
+                  {date?.toLocaleDateString(undefined, {
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </div>
+              ),
+            } as any)}
           />
         </div>
+
         <h1
           className={`text-xl sm:text-2xl text-left font-sans mt-6 ${
             theme === "dark" ? "text-gray-200" : "text-gray-950"
@@ -73,8 +137,7 @@ const Footerbar = () => {
         </h1>
         <motion.div
           ref={spotifyRef}
-          className="w-full mt-5 min-h-[152px] bg-neutral-100 dark:bg-neutral-900  rounded-2xl"
-          // Note: Added a subtle pulse/placeholder background while it loads!
+          className="w-full mt-5 min-h-[152px] bg-neutral-100 dark:bg-neutral-900 rounded-2xl"
         >
           {isSpotifyInView && (
             <Spotify
@@ -120,9 +183,7 @@ const Footerbar = () => {
 
             {/* Identity */}
             <p
-              className={`text-sm ${
-                theme === "dark" ? "text-white" : "text-black"
-              }`}
+              className={`text-sm ${theme === "dark" ? "text-white" : "text-black"}`}
             >
               Krish Jain — Developer & Builder
             </p>
@@ -136,21 +197,21 @@ const Footerbar = () => {
               <a
                 href="https://github.com/Krishcodesw"
                 target="_blank"
-                className="hover:opacity-100 transition"
+                className="hover:scale-110 hover:rotate-6 transition-transform duration-200"
               >
                 <SiGithub />
               </a>
               <a
                 href="https://www.linkedin.com/in/krish-jain-445aa332a/"
                 target="_blank"
-                className="hover:opacity-100 transition"
+                className="hover:scale-110 hover:rotate-6 transition-transform duration-200"
               >
                 <SiLinkedin />
               </a>
               <a
                 href="https://x.com/KrishJainw"
                 target="_blank"
-                className="hover:opacity-100 transition"
+                className="hover:scale-110 hover:rotate-6 transition-transform duration-200"
               >
                 <SiX />
               </a>
@@ -166,6 +227,15 @@ const Footerbar = () => {
             </p>
           </div>
         </footer>
+
+        {/* Konami Code Easter Egg Overlay */}
+        {konamiSuccess && (
+          <div className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none">
+            <div className="text-4xl font-bold text-yellow-400 animate-pulse">
+              🎉 Konami Code Unlocked! 🎉
+            </div>
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );
