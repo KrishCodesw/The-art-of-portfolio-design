@@ -62,6 +62,7 @@ const otherProjects = [
   "Deploying a monorepo to a VM via Docker and CI/CD.",
   "Containerizing different applications via Docker and deploying them in various methods like EC2, ASGs, ECS, ECR.",
   "Monitoring the above via tools like NewRelic, Prometheus and Grafana",
+  "A full end-to-end terraform configuration project which provisions 3 AWS infrastructure resources, AWS EC2, RDS and a S3 bucket all in a modular code structure implementing practices of infrastructure as code ",
 ];
 
 // --- Sub-components ---
