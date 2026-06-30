@@ -32,6 +32,7 @@ import {
   SiAmazonec2,
   SiNewrelic,
   SiKubernetes,
+  SiTerraform,
   SiSocketdotio,
 } from "react-icons/si";
 
@@ -81,6 +82,7 @@ const DevopsArray: SkillItem[] = [
   { name: "Prometheus", Icon: SiPrometheus },
   { name: "Grafana", Icon: SiGrafana },
   { name: "Kubernetes", Icon: SiKubernetes },
+  { name: "Terraform", Icon: SiTerraform },
 ];
 const Skillbar = () => {
   const { theme } = useTheme();
