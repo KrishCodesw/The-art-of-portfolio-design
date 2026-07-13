@@ -13,7 +13,7 @@ const mainProjects = [
     title: "TCET's Research Culture Development Cell",
     description:
       "Managing 2,000+ student projects & publications annually, from assignment to public showcase - without the operational overhead. One platform that brings structure, visibility, and accountability to the entire academic project lifecycle.",
-    link: "https://showcase.tcetcercd.in/showcase",
+    link: "https://showcase.tcetcercd.in/analytics",
     image: "/tcetcoe.png",
   },
   {
@@ -24,7 +24,7 @@ const mainProjects = [
     image: "/jansamvaad.png",
   },
   {
-    title: "getSQL",
+    title: "getSQL- currently inactive due to expired keys (Hobby project)",
     description:
       "The schema-aware SQL agent. Generate queries, visualize relationships, and export production-ready ER diagrams instantly.",
     link: "https://getsql.vercel.app/",
@@ -119,6 +119,7 @@ const ProjectCard = ({ project, theme, index }: any) => {
           <Image
             src={project.image}
             fill
+            loading="eager"
             className="object-fill object-top transition-transform duration-500 ease-out group-hover:scale-105"
             alt={`Screenshot of ${project.title}`}
           />
