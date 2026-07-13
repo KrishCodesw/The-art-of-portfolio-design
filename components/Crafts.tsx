@@ -38,31 +38,17 @@ const mainProjects = [
     link: "https://solananexus.vercel.app/",
     image: "/solananexus.png",
   },
-  {
-    title: "MetaStash",
-    description:
-      "Your Knowledge, Simplified. Access, organize, and share your insights effortlessly.",
-    link: "https://metastash1final.vercel.app/",
-    image: "/meta.png",
-  },
-  {
-    title: "Want to see more? Visit my GitHub!",
-    description:
-      "Or wanna collaborate on some ? Drop a mail/ DM on X/LinkedIn anytime!.",
-    link: "https://metastash1final.vercel.app/",
-    image: "/comingsoon.jpg",
-  },
 ];
 
 const otherProjects = [
+  "A full end-to-end terraform configuration project which provisions 3 AWS infrastructure resources, AWS EC2, RDS and a S3 bucket all in a modular code structure implementing practices of infrastructure as code ",
+  "Containerizing different applications via Docker and deploying them in various methods like EC2, ASGs, ECS, ECR.",
+  "Deploying a monorepo to a VM via Docker and CI/CD.",
   "Reminder app with Twilio",
   "Paytm, with a twist",
   "Auto Email Terminal based AI Agent",
   "Deploying a containerized Node.js application to ECR via CI/CD pipeline",
-  "Deploying a monorepo to a VM via Docker and CI/CD.",
-  "Containerizing different applications via Docker and deploying them in various methods like EC2, ASGs, ECS, ECR.",
   "Monitoring the above via tools like NewRelic, Prometheus and Grafana",
-  "A full end-to-end terraform configuration project which provisions 3 AWS infrastructure resources, AWS EC2, RDS and a S3 bucket all in a modular code structure implementing practices of infrastructure as code ",
 ];
 
 // --- Sub-components ---
