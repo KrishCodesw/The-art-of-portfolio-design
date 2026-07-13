@@ -34,6 +34,7 @@ import {
   SiKubernetes,
   SiTerraform,
   SiSocketdotio,
+  SiSpringboot,
 } from "react-icons/si";
 
 interface SkillItem {
@@ -44,9 +45,9 @@ interface SkillItem {
 const WEB_DEV_SKILLS: SkillItem[] = [
   { name: "NextJS", Icon: SiNextdotjs },
 
-  { name: "React", Icon: FaReact },
-  { name: "TailwindCSS", Icon: SiTailwindcss },
-  { name: "Shadcn", Icon: SiShadcnui }, // Using FaCss3 as a placeholder for Shadcn if no dedicated icon
+  // { name: "React", Icon: FaReact },
+  // { name: "TailwindCSS", Icon: SiTailwindcss },
+  // { name: "Shadcn", Icon: SiShadcnui }, // Using FaCss3 as a placeholder for Shadcn if no dedicated icon
   { name: "Typescript", Icon: SiTypescript },
   // { name: "UI/UX", Icon: FaFigma }, // Figma icon for UI/UX concepts
   { name: "Motion", Icon: SiFramer }, // Using React icon as a placeholder for Framer Motion
@@ -57,32 +58,33 @@ const WEB_DEV_SKILLS: SkillItem[] = [
   // { name: "PostgreSQL", Icon: SiPostgresql },
   // { name: "Docker", Icon: FaDocker },
   // { name: "AWS", Icon: FaAws },
-  { name: "Vercel", Icon: SiVercel },
+  // { name: "Vercel", Icon: SiVercel },
   // { name: "GitHub Actions", Icon: SiGithubactions },
 ];
 
 const BackendArray: SkillItem[] = [
+  { name: "Node.js", Icon: FaNodeJs },
+  { name: "Spring Boot", Icon: SiSpringboot },
+  { name: "fastAPI", Icon: SiFastapi },
   { name: "PostgreSQL", Icon: SiPostgresql },
   { name: "Prisma", Icon: SiPrisma },
   { name: "Express", Icon: SiExpress },
-  { name: "Node.js", Icon: FaNodeJs },
   { name: "MongoDB", Icon: SiMongodb },
   { name: "Supabase", Icon: SiSupabase },
   { name: "Turborepo", Icon: SiTurborepo },
   // { name: "SocketIo", Icon: SiSocketdotio },
-  { name: "fastAPI", Icon: SiFastapi },
 ];
 
 const DevopsArray: SkillItem[] = [
-  { name: "Github", Icon: SiGithub },
-  { name: "GithubActions", Icon: SiGithubactions },
   { name: "AWS", Icon: FaAws },
   { name: "Docker", Icon: SiDocker },
+  // { name: "Github", Icon: SiGithub },
+  { name: "Kubernetes", Icon: SiKubernetes },
+  { name: "GithubActions", Icon: SiGithubactions },
   { name: "NewRelic", Icon: SiNewrelic },
+  { name: "Terraform", Icon: SiTerraform },
   { name: "Prometheus", Icon: SiPrometheus },
   { name: "Grafana", Icon: SiGrafana },
-  { name: "Kubernetes", Icon: SiKubernetes },
-  { name: "Terraform", Icon: SiTerraform },
 ];
 const Skillbar = () => {
   const { theme } = useTheme();
