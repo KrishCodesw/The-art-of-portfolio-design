@@ -44,11 +44,11 @@ const otherProjects = [
   "A full end-to-end terraform configuration project which provisions 3 AWS infrastructure resources, AWS EC2, RDS and a S3 bucket all in a modular code structure implementing practices of infrastructure as code ",
   "Containerizing different applications via Docker and deploying them in various methods like EC2, ASGs, ECS, ECR.",
   "Deploying a monorepo to a VM via Docker and CI/CD.",
-  "Reminder app with Twilio",
-  "Paytm, with a twist",
   "Auto Email Terminal based AI Agent",
   "Deploying a containerized Node.js application to ECR via CI/CD pipeline",
   "Monitoring the above via tools like NewRelic, Prometheus and Grafana",
+  "Reminder app with Twilio",
+  "Paytm, with a twist",
 ];
 
 // --- Sub-components ---
