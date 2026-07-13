@@ -1,3 +1,268 @@
+// "use client";
+
+// import React, { useState, useRef, useEffect } from "react";
+// import { motion } from "framer-motion";
+// import { useTheme } from "./ThemeProvider";
+// import { ArrowUpRight, ChevronDown } from "lucide-react";
+// import Image from "next/image";
+// import { SiGithub } from "react-icons/si";
+
+// // --- Data Objects ---
+// const mainProjects = [
+//   {
+//     title: "TCET's Research Culture Development Cell",
+//     description:
+//       "Managing 2,000+ student projects & publications annually, from assignment to public showcase - without the operational overhead. One platform that brings structure, visibility, and accountability to the entire academic project lifecycle.",
+//     link: "https://showcase.tcetcercd.in/analytics",
+//     image: "/tcetcoe.png",
+//   },
+//   {
+//     title: "JanSamvaad",
+//     description:
+//       "Report, track, and resolve your city's problems. The app uniting citizens for action.",
+//     link: "https://jansamwaad.vercel.app/",
+//     image: "/jansamvaad.png",
+//   },
+//   {
+//     title: "getSQL- currently inactive due to expired keys (Hobby project)",
+//     description:
+//       "The schema-aware SQL agent. Generate queries, visualize relationships, and export production-ready ER diagrams instantly.",
+//     link: "https://getsql.vercel.app/",
+//     image: "/getsql.png",
+//   },
+
+//   {
+//     title: "Solana Nexus",
+//     description:
+//       "Solana Nexus is a high-performance web dashboard that modernizes token lifecycle management for the Solana Token-2022 era. By replacing fragmented command-line tools with an intuitive, caching-optimized interface, it empowers developers to track, mint, and distribute digital assets with enterprise-grade efficiency.",
+//     link: "https://solananexus.vercel.app/",
+//     image: "/solananexus.png",
+//   },
+// ];
+
+// const otherProjects = [
+//   "A full end-to-end terraform configuration project which provisions 3 AWS infrastructure resources, AWS EC2, RDS and a S3 bucket all in a modular code structure implementing practices of infrastructure as code ",
+//   "Containerizing different applications via Docker and deploying them in various methods like EC2, ASGs, ECS, ECR.",
+//   "Deploying a monorepo to a VM via Docker and CI/CD.",
+//   "Auto Email Terminal based AI Agent",
+//   "Deploying a containerized Node.js application to ECR via CI/CD pipeline",
+//   "Monitoring the above via tools like NewRelic, Prometheus and Grafana",
+//   "Reminder app with Twilio",
+//   "Paytm, with a twist",
+// ];
+
+// // --- Sub-components ---
+// const ProjectCard = ({ project, theme, index }: any) => {
+//   const [isExpanded, setIsExpanded] = useState(false);
+//   // Default to true if text is long to prevent layout shift on mount
+//   const [isOverflowing, setIsOverflowing] = useState(
+//     project.description.length > 60,
+//   );
+//   const textRef = useRef<HTMLParagraphElement>(null);
+
+//   useEffect(() => {
+//     const checkOverflow = () => {
+//       if (textRef.current) {
+//         const el = textRef.current;
+//         // Temporarily force 1-line clamp to measure accurate scroll vs client height
+//         const originalDisplay = el.style.display;
+//         const originalWebkitLineClamp = el.style.webkitLineClamp;
+//         const originalWebkitBoxOrient = el.style.webkitBoxOrient;
+//         const originalOverflow = el.style.overflow;
+
+//         el.style.display = "-webkit-box";
+//         el.style.webkitLineClamp = "1";
+//         el.style.webkitBoxOrient = "vertical";
+//         el.style.overflow = "hidden";
+
+//         const overflowing = el.scrollHeight > el.clientHeight;
+
+//         // Restore original styles
+//         el.style.display = originalDisplay;
+//         el.style.webkitLineClamp = originalWebkitLineClamp;
+//         el.style.webkitBoxOrient = originalWebkitBoxOrient;
+//         el.style.overflow = originalOverflow;
+
+//         setIsOverflowing(overflowing);
+//       }
+//     };
+
+//     checkOverflow();
+//     window.addEventListener("resize", checkOverflow);
+//     return () => window.removeEventListener("resize", checkOverflow);
+//   }, []);
+
+//   return (
+//     <motion.div
+//       initial={{ opacity: 0, y: 30 }}
+//       whileInView={{ opacity: 1, y: 0 }}
+//       viewport={{ once: true, margin: "-50px" }}
+//       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+//       className="flex flex-col group w-full"
+//     >
+//       <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800/50">
+//         <a href={project.link} target="_blank" rel="noopener noreferrer">
+//           <Image
+//             src={project.image}
+//             fill
+//             loading="eager"
+//             className="object-fill object-top transition-transform duration-500 ease-out group-hover:scale-105"
+//             alt={`Screenshot of ${project.title}`}
+//           />
+//         </a>
+//       </div>
+
+//       <div className="mt-4 flex flex-col items-start w-full">
+//         <a
+//           href={project.link}
+//           target="_blank"
+//           rel="noopener noreferrer"
+//           className={`flex items-center gap-1 text-lg font-medium transition-colors ${
+//             theme === "dark"
+//               ? "text-gray-200 hover:text-white"
+//               : "text-gray-900 hover:text-black"
+//           }`}
+//         >
+//           {project.title}{" "}
+//           <ArrowUpRight className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" />
+//         </a>
+
+//         <div className="mt-2 w-full">
+//           <p
+//             ref={textRef}
+//             className={`text-sm leading-relaxed ${
+//               theme === "dark" ? "text-gray-400" : "text-gray-600"
+//             } ${!isExpanded ? "line-clamp-1" : ""}`}
+//           >
+//             {project.description}
+//           </p>
+
+//           {isOverflowing && (
+//             <button
+//               onClick={() => setIsExpanded(!isExpanded)}
+//               className={`flex items-center gap-1 mt-1 text-xs font-medium hover:opacity-80 transition-opacity ${
+//                 theme === "dark"
+//                   ? "text-gray-500 hover:text-gray-300"
+//                   : "text-gray-500 hover:text-gray-800"
+//               }`}
+//             >
+//               {isExpanded ? "Show less" : "Read more"}
+//               <motion.div
+//                 animate={{ rotate: isExpanded ? 180 : 0 }}
+//                 transition={{ duration: 0.3, ease: "easeInOut" }}
+//               >
+//                 <ChevronDown className="w-3 h-3" />
+//               </motion.div>
+//             </button>
+//           )}
+//         </div>
+//       </div>
+//     </motion.div>
+//   );
+// };
+
+// const CraftsKJ = () => {
+//   const { theme } = useTheme();
+
+//   return (
+//     <section
+//       id="disable-selection"
+//       className={`min-h-screen py-20 px-4 sm:px-6 md:px-8 transition-colors duration-300 ${
+//         theme === "dark" ? "bg-black" : "bg-white"
+//       }`}
+//     >
+//       <div className="max-w-2xl mx-auto">
+//         {/* Header Section */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true }}
+//           transition={{ duration: 0.6 }}
+//           className="mb-12"
+//         >
+//           <h1
+//             className={`text-2xl sm:text-3xl font-sans tracking-tight ${
+//               theme === "dark" ? "text-gray-100" : "text-gray-900"
+//             }`}
+//           >
+//             Recent Builds
+//           </h1>
+//           <p
+//             className={`mt-2 text-base ${
+//               theme === "dark" ? "text-gray-400" : "text-gray-600"
+//             }`}
+//           >
+//             A selection of my recent work and technical experiments.
+//           </p>
+//         </motion.div>
+
+//         {/* Main Projects Grid */}
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12">
+//           {mainProjects.map((project, index) => (
+//             <ProjectCard
+//               key={project.title}
+//               project={project}
+//               theme={theme}
+//               index={index}
+//             />
+//           ))}
+//         </div>
+
+//         {/* Other Projects / Lab Section */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 30 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           viewport={{ once: true, margin: "-50px" }}
+//           transition={{ duration: 0.6 }}
+//           className="mt-24 pt-12 border-t border-gray-200 dark:border-gray-800/50"
+//         >
+//           <div className="flex items-center gap-3 mb-6">
+//             <h2
+//               className={`text-xl font-medium ${
+//                 theme === "dark" ? "text-gray-200" : "text-gray-900"
+//               }`}
+//             >
+//               More Experiments & Infrastructure
+//             </h2>
+//             <a
+//               href="https://github.com/KrishCodesw"
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className={`hover:scale-110 transition-transform ${
+//                 theme === "dark"
+//                   ? "text-gray-400 hover:text-white"
+//                   : "text-gray-600 hover:text-black"
+//               }`}
+//             >
+//               <SiGithub className="w-5 h-5" />
+//             </a>
+//           </div>
+
+//           <ul className="columns-1 sm:columns-2 gap-x-8">
+//             {otherProjects.map((item, index) => (
+//               <motion.li
+//                 key={index}
+//                 initial={{ opacity: 0, x: -10 }}
+//                 whileInView={{ opacity: 1, x: 0 }}
+//                 viewport={{ once: true }}
+//                 transition={{ duration: 0.4, delay: index * 0.05 }}
+//                 className={`flex items-start text-sm mb-5 break-inside-avoid ${
+//                   theme === "dark" ? "text-gray-400" : "text-gray-600"
+//                 }`}
+//               >
+//                 <span className="mr-2 mt-[2px] text-[10px] opacity-50">▹</span>
+//                 <span className="leading-relaxed">{item}</span>
+//               </motion.li>
+//             ))}
+//           </ul>
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default CraftsKJ;
+
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
@@ -24,13 +289,12 @@ const mainProjects = [
     image: "/jansamvaad.png",
   },
   {
-    title: "getSQL- currently inactive due to expired keys (Hobby project)",
+    title: "getSQL- currently inactive due to expired keys",
     description:
       "The schema-aware SQL agent. Generate queries, visualize relationships, and export production-ready ER diagrams instantly.",
     link: "https://getsql.vercel.app/",
     image: "/getsql.png",
   },
-
   {
     title: "Solana Nexus",
     description:
@@ -41,56 +305,52 @@ const mainProjects = [
 ];
 
 const otherProjects = [
-  "A full end-to-end terraform configuration project which provisions 3 AWS infrastructure resources, AWS EC2, RDS and a S3 bucket all in a modular code structure implementing practices of infrastructure as code ",
+  "A full end-to-end terraform configuration project which provisions 3 AWS infrastructure resources, AWS EC2, RDS and a S3 bucket all in a modular code structure implementing practices of infrastructure as code.",
   "Containerizing different applications via Docker and deploying them in various methods like EC2, ASGs, ECS, ECR.",
   "Deploying a monorepo to a VM via Docker and CI/CD.",
-  "Auto Email Terminal based AI Agent",
-  "Deploying a containerized Node.js application to ECR via CI/CD pipeline",
-  "Monitoring the above via tools like NewRelic, Prometheus and Grafana",
-  "Reminder app with Twilio",
-  "Paytm, with a twist",
+  "Auto Email Terminal based AI Agent.",
+  "Deploying a containerized Node.js application to ECR via CI/CD pipeline.",
+  "Monitoring the above via tools like NewRelic, Prometheus and Grafana.",
+  "Reminder app with Twilio.",
+  "Paytm, with a twist.",
 ];
 
 // --- Sub-components ---
 const ProjectCard = ({ project, theme, index }: any) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  // Default to true if text is long to prevent layout shift on mount
-  const [isOverflowing, setIsOverflowing] = useState(
-    project.description.length > 60,
-  );
+  const [isOverflowing, setIsOverflowing] = useState(false);
   const textRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
     const checkOverflow = () => {
       if (textRef.current) {
         const el = textRef.current;
-        // Temporarily force 1-line clamp to measure accurate scroll vs client height
         const originalDisplay = el.style.display;
         const originalWebkitLineClamp = el.style.webkitLineClamp;
         const originalWebkitBoxOrient = el.style.webkitBoxOrient;
         const originalOverflow = el.style.overflow;
 
         el.style.display = "-webkit-box";
-        el.style.webkitLineClamp = "1";
+        el.style.webkitLineClamp = "2"; // 2 lines for better resting readability
         el.style.webkitBoxOrient = "vertical";
         el.style.overflow = "hidden";
 
         const overflowing = el.scrollHeight > el.clientHeight;
 
-        // Restore original styles
         el.style.display = originalDisplay;
         el.style.webkitLineClamp = originalWebkitLineClamp;
         el.style.webkitBoxOrient = originalWebkitBoxOrient;
         el.style.overflow = originalOverflow;
 
-        setIsOverflowing(overflowing);
+        // Force overflow true if description is long, ensures "Read more" appears reliably
+        setIsOverflowing(overflowing || project.description.length > 80);
       }
     };
 
     checkOverflow();
     window.addEventListener("resize", checkOverflow);
     return () => window.removeEventListener("resize", checkOverflow);
-  }, []);
+  }, [project.description]);
 
   return (
     <motion.div
@@ -100,39 +360,55 @@ const ProjectCard = ({ project, theme, index }: any) => {
       transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
       className="flex flex-col group w-full"
     >
-      <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800/50">
-        <a href={project.link} target="_blank" rel="noopener noreferrer">
-          <Image
-            src={project.image}
-            fill
-            loading="eager"
-            className="object-fill object-top transition-transform duration-500 ease-out group-hover:scale-105"
-            alt={`Screenshot of ${project.title}`}
-          />
-        </a>
-      </div>
-
-      <div className="mt-4 flex flex-col items-start w-full">
+      {/* Restored Original Open Structure with Enhanced Physics */}
+      <div className="relative w-full aspect-video overflow-hidden rounded-xl bg-zinc-900 border border-zinc-800/50 isolate">
         <a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className={`flex items-center gap-1 text-lg font-medium transition-colors ${
+          className="block w-full h-full"
+        >
+          <Image
+            src={project.image}
+            fill
+            loading="eager"
+            // Using a custom cubic-bezier for a softer, more premium scaling effect
+            className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+            alt={`Screenshot of ${project.title}`}
+          />
+          {/* Extremely subtle glare overlay on hover */}
+          <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none" />
+        </a>
+      </div>
+
+      <div className="mt-5 flex flex-col items-start w-full">
+        <a
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`flex items-start gap-1.5 text-lg font-medium transition-colors ${
             theme === "dark"
               ? "text-gray-200 hover:text-white"
               : "text-gray-900 hover:text-black"
           }`}
         >
-          {project.title}{" "}
-          <ArrowUpRight className="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" />
+          <span className="leading-snug">{project.title}</span>
+          <motion.span
+            className="mt-1 opacity-60 group-hover:opacity-100 group-hover:text-current transition-opacity"
+            initial={{ x: 0, y: 0 }}
+            whileHover={{ x: 3, y: -3 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            <ArrowUpRight className="w-4 h-4" />
+          </motion.span>
         </a>
 
-        <div className="mt-2 w-full">
+        <div className="mt-2.5 w-full">
           <p
             ref={textRef}
             className={`text-sm leading-relaxed ${
               theme === "dark" ? "text-gray-400" : "text-gray-600"
-            } ${!isExpanded ? "line-clamp-1" : ""}`}
+            } ${!isExpanded ? "line-clamp-2" : ""}`}
           >
             {project.description}
           </p>
@@ -140,7 +416,7 @@ const ProjectCard = ({ project, theme, index }: any) => {
           {isOverflowing && (
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className={`flex items-center gap-1 mt-1 text-xs font-medium hover:opacity-80 transition-opacity ${
+              className={`flex items-center gap-1 mt-2 text-xs font-medium hover:opacity-80 transition-opacity ${
                 theme === "dark"
                   ? "text-gray-500 hover:text-gray-300"
                   : "text-gray-500 hover:text-gray-800"
@@ -167,7 +443,7 @@ const CraftsKJ = () => {
   return (
     <section
       id="disable-selection"
-      className={`min-h-screen py-20 px-4 sm:px-6 md:px-8 transition-colors duration-300 ${
+      className={`min-h-screen py-10 px-4 sm:px-6 md:px-8 transition-colors duration-300 ${
         theme === "dark" ? "bg-black" : "bg-white"
       }`}
     >
@@ -208,27 +484,27 @@ const CraftsKJ = () => {
           ))}
         </div>
 
-        {/* Other Projects / Lab Section */}
+        {/* Other Projects / Ledger Section */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
-          className="mt-24 pt-12 border-t border-gray-200 dark:border-gray-800/50"
+          className="pt-12  border-gray-200 dark:border-gray-800/50"
         >
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-center justify-between mb-8  border-gray-100 dark:border-white/5">
             <h2
-              className={`text-xl font-medium ${
+              className={`text-2xl sm:text-3xl ${
                 theme === "dark" ? "text-gray-200" : "text-gray-900"
               }`}
             >
-              More Experiments & Infrastructure
+              Experiments & Infrastructure
             </h2>
             <a
               href="https://github.com/KrishCodesw"
               target="_blank"
               rel="noopener noreferrer"
-              className={`hover:scale-110 transition-transform ${
+              className={`p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/5 transition-colors ${
                 theme === "dark"
                   ? "text-gray-400 hover:text-white"
                   : "text-gray-600 hover:text-black"
@@ -238,7 +514,7 @@ const CraftsKJ = () => {
             </a>
           </div>
 
-          <ul className="columns-1 sm:columns-2 gap-x-8">
+          <ul className="flex flex-col">
             {otherProjects.map((item, index) => (
               <motion.li
                 key={index}
@@ -246,12 +522,22 @@ const CraftsKJ = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
-                className={`flex items-start text-sm mb-5 break-inside-avoid ${
-                  theme === "dark" ? "text-gray-400" : "text-gray-600"
-                }`}
+                className={`group flex items-start py-4 sm:py-5 border-b border-dashed ${
+                  theme === "dark"
+                    ? "border-white/10 text-gray-400 hover:text-gray-200"
+                    : "border-black/10 text-gray-600 hover:text-gray-900"
+                } transition-colors`}
               >
-                <span className="mr-2 mt-[2px] text-[10px] opacity-50">▹</span>
-                <span className="leading-relaxed">{item}</span>
+                <span
+                  className={`mr-4 sm:mr-6 mt-[2px] font-mono text-xs opacity-40 group-hover:opacity-100 transition-opacity ${
+                    theme === "dark" ? "text-white" : "text-black"
+                  }`}
+                >
+                  {(index + 1).toString().padStart(2, "0")}
+                </span>
+                <span className="text-sm sm:text-base leading-relaxed">
+                  {item}
+                </span>
               </motion.li>
             ))}
           </ul>
