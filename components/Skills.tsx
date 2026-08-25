@@ -2,6 +2,7 @@
 
 import { motion, Variants } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
+import { DiRedis } from "react-icons/di";
 import {
   FaReact,
   FaFigma,
@@ -68,6 +69,7 @@ const BackendArray: SkillItem[] = [
   { name: "fastAPI", Icon: SiFastapi },
   { name: "PostgreSQL", Icon: SiPostgresql },
   { name: "Prisma", Icon: SiPrisma },
+  { name: "Redis", Icon: DiRedis },
   { name: "Express", Icon: SiExpress },
   { name: "MongoDB", Icon: SiMongodb },
   { name: "Supabase", Icon: SiSupabase },

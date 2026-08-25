@@ -52,7 +52,7 @@ const Introduction = () => {
               theme === "dark" ? "bg-gray-400" : "bg-gray-800"
             } bg-clip-text text-transparent`}
           >
-            18, passionate.
+            19, passionate.
           </span>
         </motion.h1>
         <motion.div
