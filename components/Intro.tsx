@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTheme } from "./ThemeProvider";
+import FavoritesEgg from "./FavoritesEgg";
 
 const Introduction = () => {
   const { theme } = useTheme();
@@ -121,6 +122,10 @@ const Introduction = () => {
           </a>
           .
         </motion.p>
+
+        <motion.div variants={itemVariants}>
+          <FavoritesEgg />
+        </motion.div>
       </div>
     </motion.section>
   );
