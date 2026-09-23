@@ -14,6 +14,16 @@ const stickers = [
     className: "z-10",
   },
   {
+    id: "kai",
+    name: "Kai",
+    image: "/kai.jpg",
+    position: "object-[center_25%]",
+    scale: "scale-100",
+    rotate: -8,
+    wobble: [-8, -5, -8],
+    className: "z-10",
+  },
+  {
     id: "charizard",
     name: "Charizard",
     image: "/charizard.png",
